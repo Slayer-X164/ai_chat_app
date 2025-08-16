@@ -1,6 +1,6 @@
 "use client";
 import { RiSendPlaneFill } from "react-icons/ri";
-import ChatUi from "./components/ChatUi";
+
 import React, { useState } from "react";
 import { z } from "zod";
 import removeMd from "remove-markdown";
@@ -58,7 +58,7 @@ export default function ChatPage() {
         const { done, value } = await reader.read();
         if (done) break;
 
-        let chunk = decoder.decode(value, { stream: true });
+        const chunk = decoder.decode(value, { stream: true });
         botReply += removeMd(chunk);
 
         // 🔥 update last assistant message as it streams
